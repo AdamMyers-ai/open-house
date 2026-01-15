@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Profile</title>
+  </head>
+  <body>
+    <%- include('../partials/_navbar.ejs') %>
+    <h1>Profile</h1>
+
+    <h2>My Listings</h2>
+    <p>
+      You own <%= myListings.length %> <%= myListings.length === 1 ? "listing" :
+      'listings'%>
+    </p>
+    <ul>
+      <% myListings.forEach(listing => { %>
+      <li>
+        A listing in <%= listing.city %> owned by <%= listing.owner.username %>
+        <a href="/listings/<%= listing._id %>">View more details</a>
+      </li>
+      <% }) %>
+    </ul>
+
+    <h2>My Favorites</h2>
+    <p>
+      You favorited <%= myFavorites.length %> <%= myFavorites.length === 1 ?
+      "listing" : 'listings'%>
+    </p>
+    <ul>
+      <% myFavorites.forEach(listing => { %>
+      <li>
+        A listing in <%= listing.city %> owned by <%= listing.owner.username %>
+        <a href="/listings/<%= listing._id %>">View more details</a>
+      </li>
+      <% }) %>
+    </ul>
+  </body>
+</html>
